@@ -169,7 +169,7 @@ A list of notes-frequencies can be found in **ENERGIA IDE** at File → Examples
 The **racingGame.h header file** contains all functions in order to run the game using a Final State Machine as defined below. 
 
 <p align="center">
-  <img width="808" alt="FSM Graph" src="https://user-images.githubusercontent.com/116173653/219498471-66cbcba4-8726-4083-a575-cea142e39289.png">
+  <img width="878" alt="FSM Graph" src="https://user-images.githubusercontent.com/116173653/220112097-fb00eb42-ee1d-4f83-ae5c-bac0c6177b73.png">
 </p>
 
 <p align="center">
