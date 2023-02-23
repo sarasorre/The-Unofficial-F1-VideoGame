@@ -243,12 +243,9 @@ void fn_STATE_SEL_CAR(){
   myScreen.gText(102, myScreen.screenSizeY()-10, "Next", blackColour);
 
   cursor = 0;
+ 
   while(1){  
-     //Print options
-    myScreen.gText(5,60+15*0, carOptions[0], blackColour, yellowColour);
-    myScreen.gText(5,60+15*1, carOptions[1], blackColour, whiteColour);
-    myScreen.gText(5,60+15*2, carOptions[2], blackColour, whiteColour);
-      
+    
     //Select option with analog
     if(map(analogRead(joystickY), 0, 4096, 0, 100) < 20){
       if(cursor < N_cars-1){ cursor++; }
@@ -312,11 +309,6 @@ void fn_STATE_SEL_DIFF(){
 
   cursor = 0;
   while(1){    
-    //Print options
-    myScreen.gText(5,60+15*0, difficultyOptions[0], blackColour, yellowColour);
-    myScreen.gText(5,60+15*1, difficultyOptions[1], blackColour, whiteColour);
-    myScreen.gText(5,60+15*2, difficultyOptions[2], blackColour, whiteColour);
-    
     //Select option with analog
     if(map(analogRead(joystickY), 0, 4096, 0, 100) < 20){
       if(cursor < N_diff-1){ cursor++; }
@@ -401,10 +393,6 @@ void fn_STATE_SEL_MODE(){
 
   cursor = 0;
   while(1){    
-    //Print options
-    myScreen.gText(5,60+15*0, modeOptions[0], blackColour, yellowColour);
-    myScreen.gText(5,60+15*1, modeOptions[1], blackColour, whiteColour);
-    
     //Select option with analog
     if(map(analogRead(joystickY), 0, 4096, 0, 100) < 20){
       if(cursor < N_modes-1){ cursor++; }
