@@ -120,7 +120,7 @@ uint8_t cursor = 0;
 
 String carOptions[N_cars] = {"- Ferrari","- RedBull","- McLaren"};
 String difficultyOptions[N_diff] = {"- Rookie","- Champion","- Legend"};
-String modeOptions[N_modes] = {"- Analog","- Accelerometer"};
+String modeOptions[N_modes] = {"- Joystick","- Accelerometer"};
 
 int carColor = redColour;
 uint8_t vel00 = 1; //Block's initial falling velocity (1, 2, 3)
