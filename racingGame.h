@@ -557,32 +557,32 @@ void fn_STATE_GAME(){
 
     //-------------------------------------------------------------BLOCKS MOTION--------------------------------------------------------------
      
-      for(int i = 0; i < current_n_blocks; i++){
-         
-        if (!collision) {
-          y_block[i] = y_block[i] + vel;
-          myScreen.dRectangle(x_block[i], y_block[i]-vel, blockDim, vel, blackColour); //Erase previous block (old position)
-          myScreen.dRectangle(x_block[i], y_block[i], blockDim, blockDim, colors[i]);  //Draws block (new position)
-        }
-        if(y_block[i] >= myScreen.screenSizeY()){ //If block reaces bottom of the screen...
-          score ++; //Update score
-          tmp_score++;
-          y_block[i]=0;
-          x_block[i]=random(grassWidth, (myScreen.screenSizeX()-grassWidth - blockDim));
-        }
-        
-        if(tmp_score == (collectPoints+vel)){ vel++; tmp_score=0; digitalWrite(redLED, HIGH); delay(100); digitalWrite(redLED, LOW); } //Every n=collectPoints points earned, increase block's falling velocity and blink redLED
-        
-        //---------------------------------------------------COLLISION----------------------------------------------------
-        if(((y_block[i]+blockDim) >= y00) && (y_block[i]  <= (y00+carLength))){ //Y-Axis collision check
-          if(((x_block[i]+blockDim) >= (x00 - tyreDim)) && (x_block[i] <= (x00+tyreDim+carWidth))){ //X-Axis collision check
-            //If collision occurred, go to game over state
-            collision = true;
-            current_state = STATE_GAME_OVER;
-            return;
-          }
+    for(int i = 0; i < current_n_blocks; i++){
+
+      if (!collision) {
+        y_block[i] = y_block[i] + vel;
+        myScreen.dRectangle(x_block[i], y_block[i]-vel, blockDim, vel, blackColour); //Erase previous block (old position)
+        myScreen.dRectangle(x_block[i], y_block[i], blockDim, blockDim, colors[i]);  //Draws block (new position)
+      }
+      if(y_block[i] >= myScreen.screenSizeY()){ //If block reaces bottom of the screen...
+        score ++; //Update score
+        tmp_score++;
+        y_block[i]=0;
+        x_block[i]=random(grassWidth, (myScreen.screenSizeX()-grassWidth - blockDim));
+      }
+
+      if(tmp_score == (collectPoints+vel)){ vel++; tmp_score=0; digitalWrite(redLED, HIGH); delay(100); digitalWrite(redLED, LOW); } //Every n=collectPoints points earned, increase block's falling velocity and blink redLED
+
+      //---------------------------------------------------COLLISION----------------------------------------------------
+      if(((y_block[i]+blockDim) >= y00) && (y_block[i]  <= (y00+carLength))){ //Y-Axis collision check
+        if(((x_block[i]+blockDim) >= (x00 - tyreDim)) && (x_block[i] <= (x00+tyreDim+carWidth))){ //X-Axis collision check
+          //If collision occurred, go to game over state
+          collision = true;
+          current_state = STATE_GAME_OVER;
+          return;
         }
       }
+    }
 
     //Print score
     myScreen.dRectangle(0, 0, grassWidth, grassWidth, greenColour); 
