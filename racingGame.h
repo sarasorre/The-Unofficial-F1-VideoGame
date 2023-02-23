@@ -128,7 +128,7 @@ uint8_t waitTime = 40; //Time between spawn try (40, 35, 35)
 uint8_t upperRandom = 30; //Upper bound of spawn probability (30, 30, 30)
 uint8_t collectPoints = 5; //Points after which the speed increases (5, 6, 5)
 uint8_t blocksNumber = 5; //Max number of blocks on screen (5, 7, 7)
-uint8_t driveMode = 1; //Drive mode: 1 = analog, -1 = accelerometer
+bool driveMode = true; //Drive mode: true = analog, false = accelerometer
 
 //--------------------------------------FSM Definition--------------------------------------
 #define NUM_STATES 9
@@ -245,6 +245,7 @@ void fn_STATE_SEL_CAR(){
   cursor = 0;
  
   while(1){  
+    
     //Select option with analog
     if(map(analogRead(joystickY), 0, 4096, 0, 100) < 20){
       if(cursor < N_cars-1){ cursor++; }
@@ -281,7 +282,7 @@ void fn_STATE_SEL_CAR(){
       myScreen.gText(2, myScreen.screenSizeY()-10, "Back", blackColour, yellowColour);
       myScreen.setFontSolid(false);
       current_state = STATE_CMD_MENU;
-      break;
+      return;
     } 
     //Manage "next" button
     buttonTwoState = digitalRead(buttonTwo); //Read the state of ButtonTwo (S2)
@@ -344,7 +345,7 @@ void fn_STATE_SEL_DIFF(){
       myScreen.gText(2, myScreen.screenSizeY()-10, "Back", blackColour, yellowColour);
       myScreen.setFontSolid(false);
       current_state = STATE_SEL_CAR;
-      break;
+      return;
     } 
     //Manage "next" button
     buttonTwoState = digitalRead(buttonTwo); //Read the state of ButtonTwo (S2)
@@ -430,7 +431,7 @@ void fn_STATE_SEL_MODE(){
       myScreen.gText(102, myScreen.screenSizeY()-10, "Next", blackColour, yellowColour);
       myScreen.setFontSolid(false);
       
-      if(cursor == 0){ driveMode = 1; } else{ driveMode = -1; } //Set drive mode based on cursor (selected option)
+      if(cursor == 0){ driveMode = true; } else{ driveMode = false; } //Set drive mode based on cursor (selected option)
       
       current_state = STATE_CMD_GAME;
       return;
@@ -462,7 +463,7 @@ void fn_STATE_CMD_GAME(){
       myScreen.gText(3,myScreen.screenSizeY()-10, "Back", blackColour, yellowColour);
       myScreen.setFontSolid(false);
       current_state = STATE_SEL_MODE;
-      break;
+      return;
     } 
     //Manage "PLAY" button
     buttonTwoState = digitalRead(buttonTwo); //Read the state of ButtonTwo (S2)
@@ -512,7 +513,7 @@ void fn_STATE_GAME(){
     buttonOneState = digitalRead(buttonOne);
     buttonTwoState = digitalRead(buttonTwo);
 
-    if(buttonOneState == LOW){ driveMode=driveMode*(-1); } //ButtonOne (S1) = Switch between drive modes
+    if(buttonOneState == LOW){ if(driveMode==true){ driveMode = false; } else{ driveMode = true; }} //ButtonOne (S1) = Switch between drive modes
     if(buttonTwoState == LOW){ current_state = STATE_INIT_GAME; break;} //ButtonTwo (S2) = Reset the game
     
     //---------------------------------------------------------------CAR MOTION---------------------------------------------------------------
