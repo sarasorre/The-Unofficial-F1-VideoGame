@@ -245,7 +245,6 @@ void fn_STATE_SEL_CAR(){
   cursor = 0;
  
   while(1){  
-    
     //Select option with analog
     if(map(analogRead(joystickY), 0, 4096, 0, 100) < 20){
       if(cursor < N_cars-1){ cursor++; }
