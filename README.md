@@ -217,7 +217,7 @@ StateMachine_t fsm[] = {
 
 ## **Creators Contributions**
 * **Sara Sorrentino:** Car accelerometer-motion, FSM implementation
-* **Mirko Bellini:** Settings menu, Car analog-motion
+* **Mirko Bellini:** Settings menu, Car joystick-motion
 * **Vittoria Longo:** Blocks spawn and motion, Blocks-car collision
 
 ## **Links**
