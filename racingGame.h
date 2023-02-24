@@ -36,8 +36,8 @@ int colors[10]={cyanColour, magentaColour, violetColour, pinkColour, yellowColou
 /** 
  * Definition of analog pin constans
  */
-const uint8_t joystickX = 2; //X-axis pin of the analog
-const uint8_t joystickY = 26; //Y_axis pin of the analog
+const uint8_t joystickX = 2; //X-axis pin of the joystick
+const uint8_t joystickY = 26; //Y_axis pin of the joystick
 const uint8_t xpin = 23; //X-axis pin of the accelerometer
 const uint8_t ypin = 24; //Y-axis pin of the accelerometer
 const uint8_t redLED = 39;
