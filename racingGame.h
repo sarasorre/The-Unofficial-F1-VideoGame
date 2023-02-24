@@ -58,16 +58,6 @@ uint8_t buttonTwoState = 0;
 
 uint8_t triggeredButton = 0;
 
-void checkS1(){
-  while(digitalRead(buttonOne) == HIGH);
-  triggeredButton = 1;
-}
-
-void checkS2(){
-  while(digitalRead(buttonTwo) == HIGH);
-  triggeredButton = 2;
-}
-
 void checkButtons(){
   while(1){
     if(digitalRead(buttonOne) == LOW){ triggeredButton = 1; break; } 
