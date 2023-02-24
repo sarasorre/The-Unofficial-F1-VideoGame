@@ -45,9 +45,7 @@ const uint8_t redLED = 39;
 /** Buttons Management
  * 
  * 1. Variables definition
- * 2. CheckS1 --> loop that sets triggeredButton to 1 when button S1 is pushed 
- * 3. CheckS2 --> loop that sets triggeredButton to 2 when button S2 is pushed 
- * 4. CheckButtons --> loop that check for both button S1 and S2 and sets triggeredButton variable by consequence
+ * 2. CheckButtons --> loop that check for both button S1 and S2 and sets triggeredButton variable by consequence
  * 
  */
 const uint8_t buttonOne = 33;
